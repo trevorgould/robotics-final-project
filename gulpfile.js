@@ -16,6 +16,7 @@ gulp.task('browserSync', function() {
 // - Watcher & Server
 gulp.task('serve', ['browserSync', 'dist'], function() {
   gulp.watch('app/*.html', ['dist']);
+  gulp.watch('app/css/*.css', ['dist']);
   gulp.watch('app/js/*.js', ['dist']);
 });
 
