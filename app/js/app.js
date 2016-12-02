@@ -3,18 +3,28 @@
   console.log("App.js Loaded Successfully");
 
   angular.module('App', ['ngMaterial'])
+
   .config(function($mdThemingProvider){
     $mdThemingProvider.theme('default')
       .dark();
   })
-  .factory('Database', function(){
-    return 1;
+
+  .factory('Server', function(){
+    // Connect to node server here
+    var SERVER = {
+      getStatus : function(){
+        return "Disconnected"
+      }
+    }
+    return SERVER;
   })
-  .controller('MainController', function($scope){
+
+  .controller('MainController', function($scope, Server){
 
     console.log('MainController Loaded Successfully.');
 
-    $scope.bind = "Test OK";
+    $scope.status = Server.getStatus();
+
 
   });
 

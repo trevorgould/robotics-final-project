@@ -9,20 +9,20 @@
 <body>
   <div  ng-app="App" ng-cloak ng-controller="MainController">
     <div id="app" layout="column" layout-fill>
-        <md-toolbar id="toolbar" md-scroll-shrink md-shrink-speed-factor="0.5">
+        <md-toolbar id="toolbar" md-scroll-shrink md-shrink-speed-factor="0.5" class="md-whiteframe-z3">
             <h2>
+              <span><img src="/assets/sparki.png" alt=""></span>
               <span>Sparki</span>
             </h2>
-
         </md-toolbar>
-
         <md-content id="content" layout="row">
-          <div id="tools" layout="column" flex="33">
-            <h3>Tools</h3>
+          <div id="tools" layout="column" flex="33" flex-xl="20" class="md-whiteframe-z2">
+            <h3>Sparki Web Interface v0.1</h3>
             <md-divider></md-divider>
+            <md-button class="md-raised">Connect</md-button>
           </div>
           <div id="content-view" layout="column" flex="66">
-            <h3>View</h3>
+            <h3>Status: {{status}}</h3>
             <md-divider></md-divider>
           </div>
         </md-content>

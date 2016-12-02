@@ -4,16 +4,24 @@
 #app #toolbar {
 
 }
+#app #toolbar h2 {
+  font-weight: 300;
+}
+#app #toolbar img {
+  max-height: 8vw;
+  position: relative;
+}
 
 #app #content {
 
 }
 
 #app #content #tools {
-  height: 100%;
-  font-weight: 100;
-  /*background-color: yellow;*/
+  height: 100vh;
+  margin-right: 20px;
+  background-color: grey;
 }
+
 #app #content #tools h3{
   font-weight: 300;
 }
