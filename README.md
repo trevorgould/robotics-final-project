@@ -1,3 +1,5 @@
 ##Sparki is dope
 
-##Run server by using http-server -c-1
+- Clone the repo
+- run 'npm install'
+- run 'npm start' to begin development
