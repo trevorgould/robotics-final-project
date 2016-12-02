@@ -1,0 +1,24 @@
+#app {
+
+}
+#app #toolbar {
+
+}
+
+#app #content {
+
+}
+
+#app #content #tools {
+  height: 100%;
+  font-weight: 100;
+  /*background-color: yellow;*/
+}
+#app #content #tools h3{
+  font-weight: 300;
+}
+
+#app #content #content-view {
+  height: 100%;
+  /*background-color: red;*/
+}

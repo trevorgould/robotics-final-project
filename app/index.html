@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/node_modules/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <div  ng-app="App" ng-cloak ng-controller="MainController">
+    <div id="app" layout="column" layout-fill>
+        <md-toolbar id="toolbar" md-scroll-shrink md-shrink-speed-factor="0.5">
+            <h2>
+              <span>Sparki</span>
+            </h2>
+
+        </md-toolbar>
+
+        <md-content id="content" layout="row">
+          <div id="tools" layout="column" flex="33">
+            <h3>Tools</h3>
+            <md-divider></md-divider>
+          </div>
+          <div id="content-view" layout="column" flex="66">
+            <h3>View</h3>
+            <md-divider></md-divider>
+          </div>
+        </md-content>
+    </div>
+  </div>
+  <script src="/node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="/node_modules/angular-material/angular-material.min.js"></script>
+  <script type="text/javascript" src="js/app.js?v=1.1"></script>
+
+
+</body>
+</html>
