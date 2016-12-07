@@ -10,7 +10,7 @@ var browserSync = require('browser-sync').create();
 
 // - Live Reload
 gulp.task('browserSync', function() {
-  browserSync.init({ server: { baseDir: 'app' } })
+  browserSync.init({ server: { baseDir: 'app' }, port: 8080 })
 });
 
 // - Watcher & Server

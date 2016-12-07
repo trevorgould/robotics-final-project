@@ -4,7 +4,7 @@
   "description": "Just a fuckin' thing.",
   "main": "index.js",
   "scripts": {
-    "start": "gulp serve",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,6 +16,7 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.2",
+    "serialport": "^4.0.6",
     "yargs": "^6.5.0"
   }
 }

@@ -15,5 +15,4 @@ function route(handle, pathname,response,request,debug) {
     }
 }
 
-
 exports.route = route;
