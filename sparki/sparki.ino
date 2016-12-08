@@ -45,21 +45,26 @@ void loop() {
     } else if (inChar == 'W') { //move  forward
 
       sparki.moveForward(5);
+      Serial.println("MOVE_FORWARD");
 
     } else if (inChar == 'S') { //move back
 
       sparki.moveBackward(5);
+      Serial.println("MOVE_BACKWARD");
+
 
     } else if (inChar == 'I') { //toggle for Inverse Kinematics
-
+      Serial.println("INVERSE_KINEMATICS");
       inverseKinematics();
 
     } else if (inChar == 'O'){  //toggle for Odometry
 
+      Serial.println("ODOMETRY");
       odometry();
 
     } else if (inChar == 'B'){  //toggle for reactiveBehaviors
 
+      Serial.println("REACTIVE_BEHAIVIORS");
       reactiveBehaviors();
 
     } else if (inChar == 'T'){ // toggle for line follow **optional**
@@ -73,7 +78,7 @@ void loop() {
 }
 
 int inverseKinematics() {
-
+  Serial.println("START_INVERSE_KINEMATICS");
   float xI                = 0.0;
   float yI                = 0.0;
   float thetaR            = 0.0;
@@ -155,6 +160,7 @@ int inverseKinematics() {
   }
 
   int odometry() {
+  Serial.println("START_ODOMETRY");
 
   float x                 = 0.0;
   float y                 = 0.0;
@@ -234,7 +240,7 @@ int inverseKinematics() {
 }
 
 int reactiveBehaviors() {
-
+  Serial.println("START_REACTIVE_BEHAVIORS");
   int state = DRIVE;
   bool gotObj = false;
 

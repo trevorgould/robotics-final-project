@@ -61,7 +61,7 @@ function initSocketIO(httpServer, debug) {
     socket.on('servoLeft', function(data) {
       console.log('servoLeft');
       serialPort.write('L');
-      
+
     });
 
     socket.on('servoRight', function(data) {
