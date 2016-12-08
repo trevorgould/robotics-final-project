@@ -54,16 +54,16 @@ void loop() {
 
 
     } else if (inChar == 'I') { //toggle for Inverse Kinematics
-      inverseKinematics();
       Serial.println("INVERSE_KINEMATICS");
+      inverseKinematics();
 
     } else if (inChar == 'O'){  //toggle for Odometry
-      odometry();
       Serial.println("ODOMETRY");
+      odometry();
       
     } else if (inChar == 'B'){  //toggle for reactiveBehaviors
-      reactiveBehaviors();
       Serial.println("REACTIVE_BEHAIVIORS");
+      reactiveBehaviors();
       
     } else if (inChar == 'T'){ // toggle for line follow **optional**
 
