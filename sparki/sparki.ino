@@ -1,10 +1,19 @@
 #include <Sparki.h>
+#include <math.h>
 String inputString = "";
 #define DRIVE 0
 #define GRAB 1
 #define ROTATE 3
 #define FOLLOW 4
 #define DROP 5
+#define LOOP_TIME         100
+#define THRESHOLD         700
+#define AXLE_DIST         85.86
+#define VELOCITY          0.0278551532
+#define LOOP_TIME         100
+#define AXLE_DIST         0.08586
+#define RAD               0.025
+#define VEL               0.0278551532
 
 void setup() {
   Serial.begin(9600);
@@ -36,7 +45,7 @@ void loop() {
       break;
     } else if (inChar == 'W') { //move  forward
 
-    	sparki.moveForward(5);
+      sparki.moveForward(5);
 
     } else if (inChar == 'S') { //move back
 
@@ -46,17 +55,17 @@ void loop() {
 
       inverseKinematics();
 
-    }	else if (inChar == 'O'){	//toggle for Odometry
+    } else if (inChar == 'O'){  //toggle for Odometry
 
       odometry();
 
     } else if (inChar == 'B'){  //toggle for reactiveBehaviors
 
-    	reactiveBehaviors();
+      reactiveBehaviors();
 
     } else if (inChar == 'T'){ // toggle for line follow **optional**
 
-    	lineFollow();
+      lineFollow();
 
     } else {
       return;
@@ -65,11 +74,7 @@ void loop() {
 }
 //************************* Inverse Kinematics ****************************
 int inverseKinematics(int x, int y) {
-#include <math.h>
-#define LOOP_TIME         100
-#define AXLE_DIST         0.08586
-#define RAD               0.025
-#define VEL               0.0278551532
+
 
   // ***************************************************************
 
@@ -96,9 +101,9 @@ int inverseKinematics(int x, int y) {
 
   // ***************************************************************
 
-  void setup() {
+
     sparki.clearLCD();
-  }
+
 
   // ***************************************************************
 
@@ -112,7 +117,7 @@ int inverseKinematics(int x, int y) {
   // 3. Do odometry using rightspeed and leftspeed
   // 4. Make sure loop only takes 100ms
 
-  void loop() {
+
     startTime = millis();
 
     // Translate into real-world coordinate frame
@@ -167,26 +172,19 @@ int inverseKinematics(int x, int y) {
 
     // Ensure every loop is exactly 100 ms
     while (millis() < startTime + LOOP_TIME) {}
-  }
+
 
     return 1;
   }
  // Odometry should return numbers based on the input movements and not line following.
  // ********************ODOMETRY CODE************************
 int odometry() {
- 
-
-#define LOOP_TIME         100
-#define THRESHOLD         700
-#define AXLE_DIST         85.86
-#define VELOCITY          0.0278551532
 
   // ***************************************************************
 
   float x                 = 0.0;
   float y                 = 0.0;
   float theta             = 0.0;
-
   float rVel              = 0.0;
   float lVel              = 0.0;
   float avgVel            = 0.0;
@@ -196,13 +194,13 @@ int odometry() {
 
   // ***************************************************************
 
-  void setup() {
+
     sparki.clearLCD();
-  }
+
 
   // ***************************************************************
 
-  void loop() {
+
     startTime = millis();
 
     // Line following
@@ -265,22 +263,22 @@ int odometry() {
     if (LOOP_TIME - (endTime - startTime) > 0) {
       delay(LOOP_TIME - (endTime - startTime));
     }
-  }
+
   return 1;
 }
-
+// ***************** Reactive Behaviors***************************
 int reactiveBehaviors() {
 //   REACT AYY LMAO
 
   int state = DRIVE;
   bool gotObj = false;
 
-  void setup() {
+
     sparki.servo(SERVO_CENTER);
     sparki.RGB(RGB_GREEN);
-  }
 
-  void loop() {
+
+
     int cm = sparki.ping();
     Serial.println(cm);
 
@@ -353,7 +351,6 @@ int reactiveBehaviors() {
         sparki.gripperOpen();
         break;
     }
-  }
   return 1;
 }
 
