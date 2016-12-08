@@ -1,6 +1,5 @@
 #include <Sparki.h>
 String inputString = "";
-#include <Sparki.h>
 #define DRIVE 0
 #define GRAB 1
 #define ROTATE 3
@@ -64,18 +63,13 @@ void loop() {
     }
   }
 }
-
+//************************* Inverse Kinematics ****************************
 int inverseKinematics(int x, int y) {
-     //************************* Inverse Kinematics ****************************
-  // Lab 2.2: Inverse Kinematics
-
-  #include <Sparki.h>
-  #include <math.h>
-
-  #define LOOP_TIME         100
-  #define AXLE_DIST         0.08586
-  #define RAD               0.025
-  #define VEL               0.0278551532
+#include <math.h>
+#define LOOP_TIME         100
+#define AXLE_DIST         0.08586
+#define RAD               0.025
+#define VEL               0.0278551532
 
   // ***************************************************************
 
@@ -177,16 +171,15 @@ int inverseKinematics(int x, int y) {
 
     return 1;
   }
+ // Odometry should return numbers based on the input movements and not line following.
+ // ********************ODOMETRY CODE************************
+int odometry() {
+ 
 
-  int odometry() {
-    // Do odometry
-
-  #include <Sparki.h>
-
-  #define LOOP_TIME         100
-  #define THRESHOLD         700
-  #define AXLE_DIST         85.86
-  #define VELOCITY          0.0278551532
+#define LOOP_TIME         100
+#define THRESHOLD         700
+#define AXLE_DIST         85.86
+#define VELOCITY          0.0278551532
 
   // ***************************************************************
 
