@@ -27,7 +27,7 @@ void loop() {
 
     } else if (inChar == 'W') {
 
-    sparki.moveForward(5);
+      sparki.moveForward(5);
 
     } else if (inChar == 'S') {
 
