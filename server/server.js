@@ -61,11 +61,31 @@ function initSocketIO(httpServer, debug) {
     socket.on('servoLeft', function(data) {
       console.log('servoLeft');
       serialPort.write('L');
+      
     });
 
     socket.on('servoRight', function(data) {
       console.log('servoRight');
       serialPort.write('R');
+
+    });
+
+    socket.on('inverseK', function(data) {
+      console.log('inverseK');
+      serialPort.write('I');
+
+    });
+
+    socket.on('odometry', function(data) {
+      console.log('odometry');
+      serialPort.write('O');
+
+    });
+
+    socket.on('reactive', function(data) {
+      console.log('reactive');
+      serialPort.write('B');
+
     });
   });
 }

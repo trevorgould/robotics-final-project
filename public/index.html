@@ -64,6 +64,12 @@
       <button type="button" class="button" id="moveForward">moveForward</button>
       <button type="button" class="button" id="moveBackward">moveBackward</button>
     </div>
+    <div class="large-8 columns">
+      <h2>Functions</h2>
+      <button type="button" class="button" id="inverseK">InverseKinematics</button>
+      <button type="button" class="button" id="odometry">Odometry</button>
+      <button type="button" class="button" id="reactive">ReactiveBehaviors</button>
+    </div>
   </div>
 
   <!-- ** Footer ** -->
@@ -103,6 +109,19 @@
       $('#moveBackward').click(function() {
         socket.emit('moveBackward');
       });
+
+      $('#moveBackward').click(function() {
+        socket.emit('inverseK');
+      });
+
+      $('#moveBackward').click(function() {
+        socket.emit('odometry');
+      });
+
+      $('#moveBackward').click(function() {
+        socket.emit('reactive');
+      });
+
     });
   </script>
 </body>
