@@ -56,6 +56,7 @@
 
       <h2>Servo</h2>
       <button type="button" class="button" id="servoLeft">servoLeft</button>
+      <button type="button" class="button" id="servoCenter">servoLeft</button>
       <button type="button" class="button" id="servoRight">servoRight</button>
 
       <h2>Movement</h2>
@@ -98,6 +99,10 @@
         socket.emit('servoLeft');
       });
 
+      $('#servoCenter').click(function() {
+        socket.emit('servoCenter');
+      });
+
       $('#servoRight').click(function() {
         socket.emit('servoRight');
       });
@@ -110,15 +115,15 @@
         socket.emit('moveBackward');
       });
 
-      $('#moveBackward').click(function() {
-        socket.emit('inverseK');
+      $('#inverseK').click(function() {
+        socket.emit('inverseK', { xG: 0.15, yG: 0.15 });
       });
 
-      $('#moveBackward').click(function() {
+      $('#odometry').click(function() {
         socket.emit('odometry');
       });
 
-      $('#moveBackward').click(function() {
+      $('#reactive').click(function() {
         socket.emit('reactive');
       });
 

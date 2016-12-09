@@ -59,28 +59,28 @@ void loop() {
     } else if (inChar == 'O'){  //toggle for Odometry
       Serial.println("ODOMETRY");
       odometry();
-      
+
     } else if (inChar == 'B'){  //toggle for reactiveBehaviors
       Serial.println("REACTIVE_BEHAIVIORS");
      // reactiveBehaviors();
-      
+
     } else if (inChar == 'A'){ // toggle for line follow **optional**
-          
+
           sparki.moveLeft(5);
           Serial.println("MOVE_LEFT");
       // lineFollow();
      } else if (inChar == 'D'){ // toggle for line follow **optional**
-          
+
           sparki.moveRight(5);
           Serial.println("MOVE_RIGHT");
-      
+
     } else {
       return;
     }
   }
 }
 
-int inverseKinematics() {
+int inverseKinematics(float xG, float yG) {
   float xI                = 0.0;
   float yI                = 0.0;
   float thetaR            = 0.0;
@@ -162,7 +162,7 @@ int inverseKinematics() {
 }
 
 int odometry() {
- 
+
 
   float x                 = 0.0;
   float y                 = 0.0;
@@ -237,7 +237,7 @@ int odometry() {
     if (LOOP_TIME - (endTime - startTime) > 0) {
       delay(LOOP_TIME - (endTime - startTime));
     }
-  
+
   return 1;
 }
 /*
@@ -250,7 +250,7 @@ int reactiveBehaviors() {
   Serial.println(cm);
 
   switch (state) {
-  
+
 //     case DRIVE:
 //       sparki.moveForward();
 //       if (!gotObj) sparki.gripperOpen();
@@ -295,7 +295,7 @@ int reactiveBehaviors() {
 //       }
 
     //  sparki.clearLCD();
-      
+
      // sparki.println(lineLeft);
      // sparki.println(lineCenter);
      // sparki.println(lineRight);
