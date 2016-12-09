@@ -66,12 +66,12 @@ void loop() {
 
     } else if (inChar == 'A'){ // toggle for line follow **optional**
 
-          sparki.moveLeft(5);
+          sparki.moveLeft(15);
           Serial.println("MOVE_LEFT");
       
      } else if (inChar == 'D'){ // toggle for line follow **optional**
 
-          sparki.moveRight(5);
+          sparki.moveRight(15);
           Serial.println("MOVE_RIGHT");
 
     } else {
