@@ -70,6 +70,12 @@ function initSocketIO(httpServer, debug) {
 
     });
 
+    socket.on('servoCenter', function(data) {
+      console.log('servoCenter');
+      serialPort.write('C');
+
+    });
+
     socket.on('inverseK', function(data) {
       console.log('inverseK');
       serialPort.write('I');
