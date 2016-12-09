@@ -54,9 +54,13 @@ void loop() {
 
     } else if (inChar == 'I') { //toggle for Inverse Kinematics
       Serial.println("INVERSE_KINEMATICS");
+<<<<<<< HEAD
 //       Pass in coordinates
       inverseKinematics(1.0, 2.0);
 
+=======
+      inverseKinematics(0.15, 0.35);
+>>>>>>> 66a4639ae7cf799788bf28f55064ec47c998e049
 
     } else if (inChar == 'O'){  //toggle for Odometry
       Serial.println("ODOMETRY");
@@ -85,8 +89,13 @@ int inverseKinematics(float x_goal, float y_goal) {
   float yI                = 0.0;
   float thetaR            = 0.0;
 
+<<<<<<< HEAD
   float xG                = x_goal; // Passed values
   float yG                = y_goal;
+=======
+  // float xG                = 0.15; // 15cm
+  // float yG                = 0.15;
+>>>>>>> 66a4639ae7cf799788bf28f55064ec47c998e049
   float thetaG            = 0.0;
 
   float n                 = 0.0;
