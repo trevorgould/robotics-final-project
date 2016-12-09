@@ -1,6 +1,5 @@
 #include <Sparki.h>
 String inputString = "";
-#include <Sparki.h>
 #define DRIVE 0
 #define GRAB 1
 #define ROTATE 3
@@ -63,12 +62,18 @@ void loop() {
       
     } else if (inChar == 'B'){  //toggle for reactiveBehaviors
       Serial.println("REACTIVE_BEHAIVIORS");
-      reactiveBehaviors();
+     // reactiveBehaviors();
       
-    } else if (inChar == 'T'){ // toggle for line follow **optional**
-
+    } else if (inChar == 'A'){ // toggle for line follow **optional**
+          
+          sparki.moveLeft(5);
+          Serial.println("MOVE_LEFT");
       // lineFollow();
-
+     } else if (inChar == 'D'){ // toggle for line follow **optional**
+          
+          sparki.moveRight(5);
+          Serial.println("MOVE_RIGHT");
+      
     } else {
       return;
     }
@@ -76,7 +81,6 @@ void loop() {
 }
 
 int inverseKinematics() {
-  Serial.println("START_INVERSE_KINEMATICS");
   float xI                = 0.0;
   float yI                = 0.0;
   float thetaR            = 0.0;
@@ -97,7 +101,7 @@ int inverseKinematics() {
   float avgVel            = VEL;
 
   unsigned long int startTime;
-  sparki.clearLCD();
+ // sparki.clearLCD();
 
   startTime = millis();
 
@@ -107,7 +111,7 @@ int inverseKinematics() {
 
   // Map out the path of Sparki
   sparki.drawPixel(xPoint, yPoint);
-  sparki.updateLCD();
+  //   sparki.updateLCD();
 
   // *******************************************************
   // * Feedback Controller
@@ -155,10 +159,10 @@ int inverseKinematics() {
   while (millis() < startTime + LOOP_TIME) {}
 
   return 1;
-  }
+}
 
-  int odometry() {
-  Serial.println("START_ODOMETRY");
+int odometry() {
+ 
 
   float x                 = 0.0;
   float y                 = 0.0;
@@ -169,12 +173,12 @@ int inverseKinematics() {
   float avgVel            = 0.0;
 
   int startTime, endTime;
-  int lineLeft, lineCenter, lineRight;
+//  int lineLeft, lineCenter, lineRight;
 
   startTime = millis();
 
   // Line following
-  lineLeft   = sparki.lineLeft();
+  /*lineLeft   = sparki.lineLeft();
   lineCenter = sparki.lineCenter();
   lineRight  = sparki.lineRight();
 
@@ -197,7 +201,7 @@ int inverseKinematics() {
 
       sparki.moveRight();
     }
-
+                    */
 
     // Average rotation speeds of the L & R wheels
     avgVel = (rVel + lVel) * 0.5;
@@ -212,8 +216,8 @@ int inverseKinematics() {
     int yPoint = (y / 10) + 50;
 
     // Map out the path of Sparki
-    sparki.drawPixel(xPoint, yPoint);
-    sparki.updateLCD();
+//    sparki.drawPixel(xPoint, yPoint);
+  //  sparki.updateLCD();
 
     endTime = millis();
 
@@ -229,16 +233,15 @@ int inverseKinematics() {
     Serial.println(LOOP_TIME - (endTime - startTime));
     Serial.println("- - - - - - - - - - - - - - -");
 
-    // Ensure every loop is 100ms
+    // Ensure every loop is 100ms  --see if we need to delete this
     if (LOOP_TIME - (endTime - startTime) > 0) {
       delay(LOOP_TIME - (endTime - startTime));
     }
-  }
+  
   return 1;
 }
-
+/*
 int reactiveBehaviors() {
-  Serial.println("START_REACTIVE_BEHAVIORS");
   int state = DRIVE;
   bool gotObj = false;
 
@@ -247,33 +250,33 @@ int reactiveBehaviors() {
   Serial.println(cm);
 
   switch (state) {
+  
+//     case DRIVE:
+//       sparki.moveForward();
+//       if (!gotObj) sparki.gripperOpen();
+//       if (cm == 3) state = GRAB;
+//       break;
 
-    case DRIVE:
-      sparki.moveForward();
-      if (!gotObj) sparki.gripperOpen();
-      if (cm == 3) state = GRAB;
-      break;
+    //case GRAB:
+    //  sparki.RGB(RGB_RED);
+    //  sparki.gripperStop();
+    //  sparki.moveStop();
+    //  delay(1000);
+    //  sparki.moveForward(1);
+    //  delay(1000);
+    //  sparki.moveStop();
+    //  sparki.gripperClose();
+    //  delay(3000);
+    //  sparki.gripperStop();
+    //  gotObj = true;
+    //  state = ROTATE;
+    //  break;
 
-    case GRAB:
-      sparki.RGB(RGB_RED);
-      sparki.gripperStop();
-      sparki.moveStop();
-      delay(1000);
-      sparki.moveForward(1);
-      delay(1000);
-      sparki.moveStop();
-      sparki.gripperClose();
-      delay(3000);
-      sparki.gripperStop();
-      gotObj = true;
-      state = ROTATE;
-      break;
-
-    case ROTATE:
-      delay(1000);
-      sparki.moveRight(180);
-      state = FOLLOW;
-      break;
+   // case ROTATE:
+    //  delay(1000);
+     // sparki.moveRight(180);
+      //state = FOLLOW;
+      //break;
 // Line Following
 //     case FOLLOW: {
 //       sparki.moveForward();
@@ -291,35 +294,23 @@ int reactiveBehaviors() {
 //         sparki.moveForward();
 //       }
 
-      sparki.clearLCD();
+    //  sparki.clearLCD();
       
-      sparki.println(lineLeft);
+     // sparki.println(lineLeft);
+     // sparki.println(lineCenter);
+     // sparki.println(lineRight);
+     // sparki.println((lineLeft + lineRight + lineCenter) / 3);
+     // sparki.updateLCD(); // display all of the information written to the screen
+    //  delay(100); // wait 0.1 seconds
+     // break;
+   // }
 
-      
-      sparki.println(lineCenter);
-
-      
-      sparki.println(lineRight);
-
-      
-      sparki.println((lineLeft + lineRight + lineCenter) / 3);
-
-      sparki.updateLCD(); // display all of the information written to the screen
-
-      delay(100); // wait 0.1 seconds
-      break;
-    }
-
-    case DROP:
-      sparki.moveStop();
-      sparki.gripperOpen();
-      break;
+  //  case DROP:
+  //   sparki.moveStop();
+  //   sparki.gripperOpen();
+  //   break;
   }
 
   return 1;
 }
-
-int lineFollow() {
-//   Line following
-  return 1;
-}
+*/
